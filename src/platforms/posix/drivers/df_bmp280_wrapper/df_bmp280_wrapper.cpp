@@ -214,7 +214,7 @@ void usage();
 
 int start(/*enum Rotation rotation*/)
 {
-	g_dev = new DfBmp280Wrapper(/*rotation*/);
+	g_dev = new(std::nothrow) DfBmp280Wrapper(/*rotation*/);
 
 	if (g_dev == nullptr) {
 		PX4_ERR("failed instantiating DfBmp280Wrapper object");

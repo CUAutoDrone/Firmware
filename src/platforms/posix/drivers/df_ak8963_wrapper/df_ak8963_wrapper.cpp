@@ -332,7 +332,7 @@ void usage();
 
 int start(enum Rotation rotation)
 {
-	g_dev = new DfAK8963Wrapper(rotation);
+	g_dev = new(std::nothrow) DfAK8963Wrapper(rotation);
 
 	if (g_dev == nullptr) {
 		PX4_ERR("failed instantiating DfAK8963Wrapper object");

@@ -2657,11 +2657,11 @@ Mavlink::stream_command(int argc, char *argv[])
 			device_name = argv[i + 1];
 			i++;
 
-		} else if (0 == strcmp(argv[i], "-s") && i < argc - 1) {
+		} else if (i < argc - 1 && 0 == strcmp(argv[i], "-s")) {
 			stream_name = argv[i + 1];
 			i++;
 
-		} else if (0 == strcmp(argv[i], "-u") && i < argc - 1) {
+		} else if (i < argc - 1 && 0 == strcmp(argv[i], "-u")) {
 			provided_network_port = true;
 			temp_int_arg = strtoul(argv[i + 1], &eptr, 10);
 

@@ -1049,7 +1049,7 @@ start(enum Rotation rotation)
 	DevHandle h_mag;
 
 	/* create the driver */
-	g_dev = new ACCELSIM(ACCELSIM_DEVICE_PATH_ACCEL, rotation);
+	g_dev = new(std::nothrow) ACCELSIM(ACCELSIM_DEVICE_PATH_ACCEL, rotation);
 
 	if (g_dev == nullptr) {
 		PX4_ERR("failed instantiating ACCELSIM obj");

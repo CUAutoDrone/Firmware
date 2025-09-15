@@ -150,7 +150,7 @@ int start()
 	}
 
 	// Start the video device
-	g_dev = new VideoDevice(dev_name, 6);
+	g_dev = new(std::nothrow) VideoDevice(dev_name, 6);
 
 	if (g_dev == nullptr) {
 		PX4_ERR("failed instantiating video device object");

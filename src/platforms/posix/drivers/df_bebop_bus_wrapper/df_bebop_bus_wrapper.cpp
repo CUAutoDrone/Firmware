@@ -454,7 +454,7 @@ void task_main(int argc, char *argv[])
 
 int start()
 {
-	g_dev = new DfBebopBusWrapper();
+	g_dev = new(std::nothrow) DfBebopBusWrapper();
 
 	if (g_dev == nullptr) {
 		PX4_ERR("failed instantiating DfBebopBusWrapper object");
