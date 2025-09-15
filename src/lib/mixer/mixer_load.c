@@ -106,7 +106,7 @@ int load_mixer_file(const char *fname, char *buf, unsigned maxlen)
 		}
 
 		/* add the line to the buffer */
-		strncat(buf, line, sizeof(buf));
+		strcat(buf, line);
 	}
 
 	fclose(fp);
