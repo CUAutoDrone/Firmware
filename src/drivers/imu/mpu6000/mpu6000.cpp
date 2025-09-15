@@ -2315,7 +2315,7 @@ start_bus(struct mpu6000_bus_option &bus, enum Rotation rotation, int range, int
 		return false;
 	}
 
-	bus.dev = new MPU6000(interface, bus.accelpath, bus.gyropath, rotation, device_type);
+	bus.dev = new(std::nothrow) MPU6000(interface, bus.accelpath, bus.gyropath, rotation, device_type);
 
 	if (bus.dev == nullptr) {
 		delete interface;

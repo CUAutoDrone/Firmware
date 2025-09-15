@@ -525,7 +525,7 @@ PX4FMU::init()
 
 	for (unsigned i = 0; i < _max_actuators; i++) {
 		char pname[16];
-		sprintf(pname, "PWM_AUX_TRIM%d", i + 1);
+		snprintf(pname, sizeof(pname), "PWM_AUX_TRIM%d", i + 1);
 		param_find(pname);
 	}
 
@@ -917,7 +917,7 @@ PX4FMU::update_pwm_rev_mask()
 		int32_t ival;
 
 		/* fill the channel reverse mask from parameters */
-		sprintf(pname, "PWM_AUX_REV%d", i + 1);
+		snprintf(pname, sizeof(pname), "PWM_AUX_REV%d", i + 1);
 		param_t param_h = param_find(pname);
 
 		if (param_h != PARAM_INVALID) {
@@ -941,7 +941,7 @@ PX4FMU::update_pwm_trims()
 			float pval;
 
 			/* fill the struct from parameters */
-			sprintf(pname, "PWM_AUX_TRIM%d", i + 1);
+			snprintf(pname, sizeof(pname), "PWM_AUX_TRIM%d", i + 1);
 			param_t param_h = param_find(pname);
 
 			if (param_h != PARAM_INVALID) {
@@ -1033,7 +1033,7 @@ PX4FMU::cycle_trampoline(void *arg)
 
 	// check if the trampoline is called for the first time
 	if (!dev) {
-		dev = new PX4FMU(false);
+		dev = new(std::nothrow) PX4FMU(false);
 
 		if (!dev) {
 			PX4_ERR("alloc failed");
@@ -3049,7 +3049,7 @@ PX4FMU::test()
 	}
 
 	PX4_INFO("Testing %u servos and %u input captures", (unsigned)servo_count, capture_count);
-	memset(capture_conf, 0, sizeof(capture_conf));
+	memset_s(capture_conf, sizeof(capture_conf), 0, sizeof(capture_conf));
 
 	if (capture_count != 0) {
 		for (unsigned i = 0; i < capture_count; i++) {

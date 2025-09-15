@@ -762,7 +762,7 @@ start(int argc, char *argv[])
 		while (*cur_bus != -1) {
 			/* create the driver */
 			/* warnx("trying bus %d", *cur_bus); */
-			g_dev = new PX4FLOW(*cur_bus, address, (enum Rotation)0, conversion_interval, sonar_rotation);
+			g_dev = new(std::nothrow) PX4FLOW(*cur_bus, address, (enum Rotation)0, conversion_interval, sonar_rotation);
 
 			if (g_dev == nullptr) {
 				/* this is a fatal error */

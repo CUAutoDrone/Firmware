@@ -260,7 +260,7 @@ start(int i2c_bus)
 	}
 
 	/* create the driver */
-	g_dev = new ETSAirspeed(i2c_bus);
+	g_dev = new(std::nothrow) ETSAirspeed(i2c_bus);
 
 	if (g_dev == nullptr) {
 		goto fail;

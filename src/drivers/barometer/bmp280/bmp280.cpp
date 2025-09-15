@@ -664,7 +664,7 @@ start_bus(struct bmp280_bus_option &bus)
 		return false;
 	}
 
-	bus.dev = new BMP280(interface, bus.devpath);
+	bus.dev = new(std::nothrow) BMP280(interface, bus.devpath);
 
 	if (bus.dev == nullptr) {
 		return false;

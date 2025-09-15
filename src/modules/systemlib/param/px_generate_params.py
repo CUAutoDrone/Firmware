@@ -33,7 +33,7 @@ def generate(xml_file, dest='.'):
 
     # for jinja docs see: http://jinja.pocoo.org/docs/2.9/api/
     env = Environment(
-        loader=FileSystemLoader(os.path.join(script_path, 'templates')))
+        loader=FileSystemLoader(os.path.join(script_path, 'templates')), autoescape=True)
 
     if not os.path.isdir(dest):
         os.path.mkdir(dest)

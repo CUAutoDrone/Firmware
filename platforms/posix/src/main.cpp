@@ -526,7 +526,7 @@ int main(int argc, char **argv)
 
 			switch (c) {
 			case 127:	// backslash
-				if (mystr.length() - cursor_position > 0) {
+				if ((int)mystr.length() - cursor_position > 0) {
 					mystr.erase(mystr.length() - cursor_position - 1, 1);
 
 				}

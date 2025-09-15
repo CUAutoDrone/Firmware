@@ -42,7 +42,7 @@ LogWriter::LogWriter(Backend configured_backend, size_t file_buffer_size, unsign
 	: _backend(configured_backend)
 {
 	if (configured_backend & BackendFile) {
-		_log_writer_file_for_write = _log_writer_file = new LogWriterFile(file_buffer_size);
+		_log_writer_file_for_write = _log_writer_file = new(std::nothrow) LogWriterFile(file_buffer_size);
 
 		if (!_log_writer_file) {
 			PX4_ERR("LogWriterFile allocation failed");
@@ -50,7 +50,7 @@ LogWriter::LogWriter(Backend configured_backend, size_t file_buffer_size, unsign
 	}
 
 	if (configured_backend & BackendMavlink) {
-		_log_writer_mavlink_for_write = _log_writer_mavlink = new LogWriterMavlink(queue_size);
+		_log_writer_mavlink_for_write = _log_writer_mavlink = new(std::nothrow) LogWriterMavlink(queue_size);
 
 		if (!_log_writer_mavlink) {
 			PX4_ERR("LogWriterMavlink allocation failed");

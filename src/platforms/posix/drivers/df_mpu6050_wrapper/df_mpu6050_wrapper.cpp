@@ -589,7 +589,7 @@ void usage();
 
 int start(enum Rotation rotation)
 {
-	g_dev = new DfMPU6050Wrapper(rotation);
+	g_dev = new(std::nothrow) DfMPU6050Wrapper(rotation);
 
 	if (g_dev == nullptr) {
 		PX4_ERR("failed instantiating DfMPU6050Wrapper object");

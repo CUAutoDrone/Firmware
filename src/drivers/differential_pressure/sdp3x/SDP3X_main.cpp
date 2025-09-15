@@ -58,7 +58,7 @@ start(uint8_t i2c_bus)
 		return PX4_ERROR;
 	}
 
-	g_dev = new SDP3X(i2c_bus, I2C_ADDRESS_1_SDP3X, PATH_SDP3X);
+	g_dev = new(std::nothrow) SDP3X(i2c_bus, I2C_ADDRESS_1_SDP3X, PATH_SDP3X);
 
 	/* check if the SDP3XDSO was instantiated */
 	if (g_dev == nullptr) {
@@ -69,7 +69,7 @@ start(uint8_t i2c_bus)
 	if (g_dev->init() != PX4_OK) {
 		delete g_dev;
 
-		g_dev = new SDP3X(i2c_bus, I2C_ADDRESS_2_SDP3X, PATH_SDP3X);
+		g_dev = new(std::nothrow) SDP3X(i2c_bus, I2C_ADDRESS_2_SDP3X, PATH_SDP3X);
 
 		/* check if the SDP3XDSO was instantiated */
 		if (g_dev == nullptr) {

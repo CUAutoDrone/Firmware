@@ -532,7 +532,7 @@ void IridiumSBD::write_tx_buf()
 	pthread_mutex_lock(&tx_buf_mutex);
 
 	char command[13];
-	sprintf(command, "AT+SBDWB=%d", tx_buf_write_idx);
+	snprintf(command, sizeof(command), "AT+SBDWB=%d", tx_buf_write_idx);
 	write_at(command);
 
 	if (read_at_command() != SATCOM_RESULT_READY) {

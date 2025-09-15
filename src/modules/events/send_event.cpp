@@ -85,7 +85,7 @@ int SendEvent::start()
 
 void SendEvent::initialize_trampoline(void *arg)
 {
-	SendEvent *send_event = new SendEvent();
+	SendEvent *send_event = new(std::nothrow) SendEvent();
 
 	if (!send_event) {
 		PX4_ERR("alloc failed");

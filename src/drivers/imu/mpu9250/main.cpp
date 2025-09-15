@@ -194,7 +194,7 @@ start_bus(struct mpu9250_bus_option &bus, enum Rotation rotation, bool external)
 
 #endif
 
-	bus.dev = new MPU9250(interface, mag_interface, bus.accelpath, bus.gyropath, bus.magpath, rotation);
+	bus.dev = new(std::nothrow) MPU9250(interface, mag_interface, bus.accelpath, bus.gyropath, bus.magpath, rotation);
 
 	if (bus.dev == nullptr) {
 		delete interface;

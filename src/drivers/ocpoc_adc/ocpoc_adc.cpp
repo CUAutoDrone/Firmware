@@ -191,7 +191,7 @@ int ocpoc_adc_main(int argc, char *argv[])
 			return PX4_OK;
 		}
 
-		instance = new OcpocADC;
+		instance = new(std::nothrow) OcpocADC;
 
 		if (!instance) {
 			PX4_WARN("not enough memory");

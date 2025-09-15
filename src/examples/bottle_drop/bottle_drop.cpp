@@ -891,7 +891,7 @@ int bottle_drop_main(int argc, char *argv[])
 			errx(1, "already running");
 		}
 
-		bottle_drop::g_bottle_drop = new BottleDrop;
+		bottle_drop::g_bottle_drop = new(std::nothrow) BottleDrop;
 
 		if (bottle_drop::g_bottle_drop == nullptr) {
 			errx(1, "alloc failed");

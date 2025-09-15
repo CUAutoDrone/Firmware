@@ -1665,7 +1665,7 @@ oreoled_main(int argc, char *argv[])
 		}
 
 		/* instantiate driver */
-		g_oreoled = new OREOLED(i2cdevice, i2c_addr, autoupdate, alwaysupdate);
+		g_oreoled = new(std::nothrow) OREOLED(i2cdevice, i2c_addr, autoupdate, alwaysupdate);
 
 		/* check if object was created */
 		if (g_oreoled == nullptr) {

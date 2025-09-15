@@ -361,7 +361,7 @@ void TemperatureCalibration::publish_led_control(led_control_s &led_control)
 int run_temperature_calibration(bool accel, bool baro, bool gyro)
 {
 	PX4_INFO("Starting temperature calibration task (accel=%i, baro=%i, gyro=%i)", (int)accel, (int)baro, (int)gyro);
-	temperature_calibration::instance = new TemperatureCalibration(accel, baro, gyro);
+	temperature_calibration::instance = new(std::nothrow) TemperatureCalibration(accel, baro, gyro);
 
 	if (temperature_calibration::instance == nullptr) {
 		PX4_ERR("alloc failed");

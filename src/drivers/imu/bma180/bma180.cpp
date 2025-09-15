@@ -775,7 +775,7 @@ start()
 	}
 
 	/* create the driver */
-	g_dev = new BMA180(1 /* XXX magic number */, PX4_SPIDEV_BMA);
+	g_dev = new(std::nothrow) BMA180(1 /* XXX magic number */, PX4_SPIDEV_BMA);
 
 	if (g_dev == nullptr) {
 		goto fail;

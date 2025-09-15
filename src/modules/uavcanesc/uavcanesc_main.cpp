@@ -169,7 +169,7 @@ int UavcanEsc::start(uavcan::NodeID node_id, uint32_t bitrate)
 	/*
 	 * Node init
 	 */
-	_instance = new UavcanEsc(can.driver, uavcan_stm32::SystemClock::instance());
+	_instance = new(std::nothrow) UavcanEsc(can.driver, uavcan_stm32::SystemClock::instance());
 
 	if (_instance == nullptr) {
 		PX4_WARN("Out of memory");

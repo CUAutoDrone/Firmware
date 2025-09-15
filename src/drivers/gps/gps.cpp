@@ -1107,7 +1107,7 @@ GPS *GPS::instantiate(int argc, char *argv[], Instance instance)
 
 	GPS *gps;
 	if (instance == Instance::Main) {
-		gps = new GPS(device_name, mode, interface, fake_gps, enable_sat_info, instance);
+		gps = new(std::nothrow) GPS(device_name, mode, interface, fake_gps, enable_sat_info, instance);
 
 		if (gps && device_name_secondary) {
 			task_spawn(argc, argv, Instance::Secondary);

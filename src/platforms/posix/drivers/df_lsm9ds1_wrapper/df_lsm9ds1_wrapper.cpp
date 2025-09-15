@@ -745,7 +745,7 @@ void usage();
 
 int start(bool mag_enabled, enum Rotation rotation)
 {
-	g_dev = new DfLsm9ds1Wrapper(mag_enabled, rotation);
+	g_dev = new(std::nothrow) DfLsm9ds1Wrapper(mag_enabled, rotation);
 
 	if (g_dev == nullptr) {
 		PX4_ERR("failed instantiating DfLsm9ds1Wrapper object");

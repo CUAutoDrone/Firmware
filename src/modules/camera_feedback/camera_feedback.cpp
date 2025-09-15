@@ -254,7 +254,7 @@ int camera_feedback_main(int argc, char *argv[])
 			return 0;
 		}
 
-		camera_feedback::g_camera_feedback = new CameraFeedback();
+		camera_feedback::g_camera_feedback = new(std::nothrow) CameraFeedback();
 
 		if (camera_feedback::g_camera_feedback == nullptr) {
 			PX4_WARN("alloc failed");

@@ -1223,7 +1223,7 @@ start(enum Rotation rotation)
 	}
 
 	/* create the driver */
-	*g_dev_ptr = new GYROSIM(path_accel, path_gyro, rotation);
+	*g_dev_ptr = new(std::nothrow) GYROSIM(path_accel, path_gyro, rotation);
 
 	if (*g_dev_ptr == nullptr) {
 		goto fail;

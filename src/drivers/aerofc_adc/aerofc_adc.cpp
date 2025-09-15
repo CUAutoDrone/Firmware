@@ -175,7 +175,7 @@ int aerofc_adc_main(int argc, char *argv[])
 				continue;
 			}
 
-			instance = new AEROFC_ADC(bus_options[i].busnum);
+			instance = new(std::nothrow) AEROFC_ADC(bus_options[i].busnum);
 
 			if (!instance) {
 				warn("No memory to instance AEROFC_ADC");

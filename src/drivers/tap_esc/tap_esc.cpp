@@ -944,7 +944,7 @@ int tap_esc_start(void)
 
 	if (tap_esc == nullptr) {
 
-		tap_esc = new TAP_ESC(_supported_channel_count);
+		tap_esc = new(std::nothrow) TAP_ESC(_supported_channel_count);
 
 		if (tap_esc == nullptr) {
 			ret = -ENOMEM;

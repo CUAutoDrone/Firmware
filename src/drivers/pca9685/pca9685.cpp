@@ -586,7 +586,7 @@ pca9685_main(int argc, char *argv[])
 		}
 
 		if (g_pca9685 == nullptr) {
-			g_pca9685 = new PCA9685(i2cdevice, i2caddr);
+			g_pca9685 = new(std::nothrow) PCA9685(i2cdevice, i2caddr);
 
 			if (g_pca9685 == nullptr) {
 				errx(1, "new failed");

@@ -187,7 +187,7 @@ start(unsigned  channels)
 		errx(1, "already started");
 	}
 
-	g_test = new TEST_PPM(channels);
+	g_test = new(std::nothrow) TEST_PPM(channels);
 
 	if (g_test == nullptr) {
 		goto fail;

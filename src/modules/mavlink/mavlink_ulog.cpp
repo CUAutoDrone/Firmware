@@ -215,7 +215,7 @@ MavlinkULog *MavlinkULog::try_start(int datarate, float max_rate_factor, uint8_t
 	lock();
 
 	if (!_instance) {
-		ret = _instance = new MavlinkULog(datarate, max_rate_factor, target_system, target_component);
+		ret = _instance = new(std::nothrow) MavlinkULog(datarate, max_rate_factor, target_system, target_component);
 
 		if (!_instance) {
 			failed = true;

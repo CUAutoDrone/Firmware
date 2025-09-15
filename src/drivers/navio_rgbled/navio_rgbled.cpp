@@ -225,7 +225,7 @@ RGBLED *g_dev = nullptr;
 
 int start()
 {
-	g_dev = new RGBLED("navio_rgbled");
+	g_dev = new(std::nothrow) RGBLED("navio_rgbled");
 
 	if (g_dev == nullptr) {
 		PX4_ERR("failed instantiating RGBLED");

@@ -395,7 +395,7 @@ start(int i2c_bus)
 	}
 
 	/* create the driver, try the MS4525DO first */
-	g_dev = new MEASAirspeed(i2c_bus, I2C_ADDRESS_MS4525DO, PATH_MS4525);
+	g_dev = new(std::nothrow) MEASAirspeed(i2c_bus, I2C_ADDRESS_MS4525DO, PATH_MS4525);
 
 	/* check if the MS4525DO was instantiated */
 	if (g_dev == nullptr) {

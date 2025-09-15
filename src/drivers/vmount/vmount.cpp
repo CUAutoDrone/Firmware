@@ -224,7 +224,7 @@ static int vmount_thread_main(int argc, char *argv[])
 				return -1;
 			}
 
-			test_input = new InputTest(angles[0], angles[1], angles[2]);
+			test_input = new(std::nothrow) InputTest(angles[0], angles[1], angles[2]);
 
 			if (!test_input) {
 				PX4_ERR("memory allocation failed");
@@ -313,14 +313,14 @@ static int vmount_thread_main(int argc, char *argv[])
 
 			switch (params.mnt_mode_out) {
 			case 0: //AUX
-				thread_data.output_obj = new OutputRC(output_config);
+				thread_data.output_obj = new(std::nothrow) OutputRC(output_config);
 
 				if (!thread_data.output_obj) { alloc_failed = true; }
 
 				break;
 
 			case 1: //MAVLINK
-				thread_data.output_obj = new OutputMavlink(output_config);
+				thread_data.output_obj = new(std::nothrow) OutputMavlink(output_config);
 
 				if (!thread_data.output_obj) { alloc_failed = true; }
 

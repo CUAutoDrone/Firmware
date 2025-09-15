@@ -1049,7 +1049,7 @@ blinkm_main(int argc, char *argv[])
 			return 1;
 		}
 
-		g_blinkm = new BlinkM(i2cdevice, blinkmadr);
+		g_blinkm = new(std::nothrow) BlinkM(i2cdevice, blinkmadr);
 
 		if (g_blinkm == nullptr) {
 			warnx("new failed");

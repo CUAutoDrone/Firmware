@@ -187,7 +187,7 @@ void usage();
 
 int start()
 {
-	g_dev = new DfBebopRangeFinderWrapper();
+	g_dev = new(std::nothrow) DfBebopRangeFinderWrapper();
 
 	if (g_dev == nullptr) {
 		PX4_ERR("failed instantiating DfBebopRangeFinderWrapper object");

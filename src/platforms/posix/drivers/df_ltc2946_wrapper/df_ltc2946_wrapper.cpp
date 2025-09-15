@@ -166,7 +166,7 @@ void usage();
 int start()
 {
 	PX4_WARN("starting LTC2946");
-	g_dev = new DfLtc2946Wrapper();
+	g_dev = new(std::nothrow) DfLtc2946Wrapper();
 
 	if (g_dev == nullptr) {
 		PX4_ERR("failed instantiating DfLtc2946Wrapper object");

@@ -312,7 +312,7 @@ static int  write_stack(bool inValid, int winsize, uint32_t wtopaddr,
 					if (wtopaddr == topaddr) {
 						strncpy(marker, "<-- ", sizeof(marker));
 						strncat(marker, sp_name, sizeof(marker) - 1);
-						strncat(marker, " top", sizeof(marker));
+						strncat(marker, " top", sizeof(marker) - 1);
 
 					} else if (wtopaddr == spaddr) {
 						strncpy(marker, "<-- ", sizeof(marker));
@@ -321,7 +321,7 @@ static int  write_stack(bool inValid, int winsize, uint32_t wtopaddr,
 					} else if (wtopaddr == botaddr) {
 						strncpy(marker, "<-- ", sizeof(marker));
 						strncat(marker, sp_name, sizeof(marker) - 1);
-						strncat(marker, " bottom", sizeof(marker));
+						strncat(marker, " bottom", sizeof(marker) - 1);
 
 					} else {
 						marker[0] = '\0';
@@ -813,7 +813,7 @@ static int hardfault_commit(char *caller)
 				ret = format_fault_file_name(&desc.lastwrite, path, arraySize(path));
 
 				if (ret == OK) {
-					int fdout = open(path, O_RDWR | O_CREAT);
+					int fdout = open(path, O_RDWR | O_CREAT, 00666);
 
 					if (fdout >= 0) {
 						identify(caller);

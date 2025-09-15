@@ -326,7 +326,7 @@ rgbled_pwm_main(int argc, char *argv[])
 		}
 
 		if (g_rgbled == nullptr) {
-			g_rgbled = new RGBLED_PWM();
+			g_rgbled = new(std::nothrow) RGBLED_PWM();
 
 			if (g_rgbled == nullptr) {
 				errx(1, "new failed");

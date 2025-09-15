@@ -604,7 +604,7 @@ int tone_alarm_main(int argc, char *argv[])
 			}
 
 			if (g_dev == nullptr) {
-				g_dev = new ToneAlarm();
+				g_dev = new(std::nothrow) ToneAlarm();
 
 				if (g_dev == nullptr) {
 					PX4_ERR("couldn't allocate the ToneAlarm driver");

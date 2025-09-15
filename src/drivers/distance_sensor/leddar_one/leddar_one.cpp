@@ -195,7 +195,7 @@ int leddar_one_main(int argc, char *argv[])
 	const char *verb = argv[myoptind];
 
 	if (!strcmp(verb, "start")) {
-		inst = new leddar_one(DEVICE_PATH, serial_port, rotation);
+		inst = new(std::nothrow) leddar_one(DEVICE_PATH, serial_port, rotation);
 
 		if (!inst) {
 			PX4_ERR("No memory to allocate " NAME);

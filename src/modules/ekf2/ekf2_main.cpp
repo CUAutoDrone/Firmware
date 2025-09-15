@@ -1472,7 +1472,7 @@ int Ekf2::getRangeSubIndex(const int *subs)
 
 Ekf2 *Ekf2::instantiate(int argc, char *argv[])
 {
-	Ekf2 *instance = new Ekf2();
+	Ekf2 *instance = new(std::nothrow) Ekf2();
 
 	if (instance) {
 		if (argc >= 2 && !strcmp(argv[1], "-r")) {

@@ -781,7 +781,7 @@ void usage();
 
 int start(bool mag_enabled, enum Rotation rotation)
 {
-	g_dev = new DfMpu9250Wrapper(mag_enabled, rotation);
+	g_dev = new(std::nothrow) DfMpu9250Wrapper(mag_enabled, rotation);
 
 	if (g_dev == nullptr) {
 		PX4_ERR("failed instantiating DfMpu9250Wrapper object");

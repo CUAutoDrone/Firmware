@@ -103,7 +103,7 @@ void LogWriterFile::start_log(const char *filename)
 	}
 
 	if (_buffer == nullptr) {
-		_buffer = new uint8_t[_buffer_size];
+		_buffer = new(std::nothrow) uint8_t[_buffer_size];
 
 		if (_buffer == nullptr) {
 			PX4_ERR("Can't create log buffer");

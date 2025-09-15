@@ -898,7 +898,7 @@ batt_smbus_main(int argc, char *argv[])
 
 		} else {
 			// create new global object
-			g_batt_smbus = new BATT_SMBUS(i2cdevice, batt_smbusadr);
+			g_batt_smbus = new(std::nothrow) BATT_SMBUS(i2cdevice, batt_smbusadr);
 
 			if (g_batt_smbus == nullptr) {
 				PX4_ERR("new failed");

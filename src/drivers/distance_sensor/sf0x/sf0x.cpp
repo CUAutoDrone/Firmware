@@ -789,7 +789,7 @@ start(const char *port, uint8_t rotation)
 	}
 
 	/* create the driver */
-	g_dev = new SF0X(port, rotation);
+	g_dev = new(std::nothrow) SF0X(port, rotation);
 
 	if (g_dev == nullptr) {
 		goto fail;

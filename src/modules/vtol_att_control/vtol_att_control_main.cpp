@@ -798,7 +798,7 @@ int vtol_att_control_main(int argc, char *argv[])
 			return 0;
 		}
 
-		VTOL_att_control::g_control = new VtolAttitudeControl;
+		VTOL_att_control::g_control = new(std::nothrow) VtolAttitudeControl;
 
 		if (VTOL_att_control::g_control == nullptr) {
 			PX4_WARN("alloc failed");

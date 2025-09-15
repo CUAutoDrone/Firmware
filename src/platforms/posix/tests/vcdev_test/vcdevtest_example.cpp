@@ -270,7 +270,7 @@ int VCDevExample::main()
 {
 	appState.setRunning(true);
 
-	_node = new VCDevNode();
+	_node = new(std::nothrow) VCDevNode();
 
 	if (_node == nullptr) {
 		PX4_INFO("Failed to allocate VCDevNode");

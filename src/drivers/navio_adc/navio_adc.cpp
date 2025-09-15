@@ -271,7 +271,7 @@ int navio_adc_main(int argc, char *argv[])
 			return PX4_OK;
 		}
 
-		instance = new NavioADC;
+		instance = new(std::nothrow) NavioADC;
 
 		if (!instance) {
 			PX4_WARN("not enough memory");

@@ -202,7 +202,7 @@ void usage();
 int start(uint8_t rotation)
 {
 	PX4_ERR("start");
-	g_dev = new DfTROneWrapper(rotation);
+	g_dev = new(std::nothrow) DfTROneWrapper(rotation);
 
 	if (g_dev == nullptr) {
 		PX4_ERR("failed instantiating DfTROneWrapper object");

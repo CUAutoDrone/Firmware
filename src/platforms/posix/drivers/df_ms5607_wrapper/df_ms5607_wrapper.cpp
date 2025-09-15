@@ -212,7 +212,7 @@ void usage();
 
 int start(/*enum Rotation rotation*/)
 {
-	g_dev = new DfMS5607Wrapper(/*rotation*/);
+	g_dev = new(std::nothrow) DfMS5607Wrapper(/*rotation*/);
 
 	if (g_dev == nullptr) {
 		PX4_ERR("failed instantiating DfMS5607Wrapper object");

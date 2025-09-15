@@ -194,7 +194,7 @@ int UavcanNode::start(uavcan::NodeID node_id, uint32_t bitrate)
 	/*
 	 * Node init
 	 */
-	_instance = new UavcanNode(can.driver, uavcan_stm32::SystemClock::instance());
+	_instance = new(std::nothrow) UavcanNode(can.driver, uavcan_stm32::SystemClock::instance());
 
 	if (_instance == nullptr) {
 		warnx("Out of memory");

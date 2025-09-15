@@ -116,7 +116,7 @@ ADCSIM::ADCSIM(uint32_t channels) :
 		}
 	}
 
-	_samples = new px4_adc_msg_t[_channel_count];
+	_samples = new(std::nothrow) px4_adc_msg_t[_channel_count];
 
 	/* prefill the channel numbers in the sample array */
 	if (_samples != nullptr) {
@@ -230,7 +230,7 @@ adcsim_main(int argc, char *argv[])
 
 	if (g_adc == nullptr) {
 		/* FIXME - this hardcodes the default channel set for SITL - should be configurable */
-		g_adc = new ADCSIM((1 << 10) | (1 << 11) | (1 << 12) | (1 << 13));
+		g_adc = new(std::nothrow) ADCSIM((1 << 10) | (1 << 11) | (1 << 12) | (1 << 13));
 
 		if (g_adc == nullptr) {
 			PX4_ERR("couldn't allocate the ADCSIM driver");

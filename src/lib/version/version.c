@@ -77,13 +77,13 @@ uint32_t version_tag_to_number(const char *tag)
 			point_count++;
 		}
 
-		if (tag[i] == 'r' && i < strlen(tag) - 1 && tag[i + 1] == 'c') {
+		if (i < strlen(tag) - 1 && tag[i] == 'r' && tag[i + 1] == 'c') {
 			firmware_type = FIRMWARE_TYPE_RC;
 
 		} else if (tag[i] == 'p') {
 			firmware_type = FIRMWARE_TYPE_ALPHA;
 
-		} else if (tag[i] == 't' && i < strlen(tag) - 1 && tag[i + 1] == 'y') {
+		} else if (i < strlen(tag) - 1 && tag[i] == 't' && tag[i + 1] == 'y') {
 			firmware_type = FIRMWARE_TYPE_DEV;
 
 		} else if (tag[i] == 't') {
@@ -165,13 +165,13 @@ uint32_t version_tag_to_vendor_version_number(const char *tag)
 			point_count++;
 		}
 
-		if (tag[i] == 'r' && i < strlen(tag) - 1 && tag[i + 1] == 'c') {
+		if (i < strlen(tag) - 1 && tag[i] == 'r' && tag[i + 1] == 'c') {
 			firmware_type = FIRMWARE_TYPE_RC;
 
 		} else if (tag[i] == 'p') {
 			firmware_type = FIRMWARE_TYPE_ALPHA;
 
-		} else if (tag[i] == 't' && i < strlen(tag) - 1 && tag[i + 1] == 'y') {
+		} else if (i < strlen(tag) - 1 && tag[i] == 't' && tag[i + 1] == 'y') {
 			firmware_type = FIRMWARE_TYPE_DEV;
 
 		} else if (tag[i] == 't') {

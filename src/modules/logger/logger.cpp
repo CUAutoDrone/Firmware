@@ -359,7 +359,7 @@ Logger *Logger::instantiate(int argc, char *argv[])
 		return nullptr;
 	}
 
-	Logger *logger = new Logger(backend, log_buffer_size, log_interval, poll_topic, log_on_start,
+	Logger *logger = new(std::nothrow) Logger(backend, log_buffer_size, log_interval, poll_topic, log_on_start,
 				    log_until_shutdown, log_name_timestamp, queue_size);
 
 #if defined(DBGPRINT) && defined(__PX4_NUTTX)
@@ -896,7 +896,7 @@ void Logger::run()
 		}
 
 		_msg_buffer_len = max_msg_size;
-		_msg_buffer = new uint8_t[_msg_buffer_len];
+		_msg_buffer = new(std::nothrow) uint8_t[_msg_buffer_len];
 
 		if (!_msg_buffer) {
 			PX4_ERR("failed to alloc message buffer");
@@ -2146,7 +2146,7 @@ int Logger::remove_directory(const char *dir)
 		}
 
 		len = dir_len + strlen(p->d_name) + 2;
-		buf = new char[len];
+		buf = new(std::nothrow) char[len];
 
 		if (buf) {
 			struct stat statbuf;

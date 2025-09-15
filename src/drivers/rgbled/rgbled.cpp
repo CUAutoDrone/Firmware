@@ -487,7 +487,7 @@ rgbled_main(int argc, char *argv[])
 		}
 
 		if (g_rgbled == nullptr) {
-			g_rgbled = new RGBLED(i2cdevice, rgbledadr);
+			g_rgbled = new(std::nothrow) RGBLED(i2cdevice, rgbledadr);
 
 			if (g_rgbled == nullptr) {
 				PX4_WARN("alloc failed");

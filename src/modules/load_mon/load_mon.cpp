@@ -158,7 +158,7 @@ LoadMon::~LoadMon()
 
 int LoadMon::task_spawn(int argc, char *argv[])
 {
-	LoadMon *obj = new LoadMon();
+	LoadMon *obj = new(std::nothrow) LoadMon();
 
 	if (!obj) {
 		PX4_ERR("alloc failed");

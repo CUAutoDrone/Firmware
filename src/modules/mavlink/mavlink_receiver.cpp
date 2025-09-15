@@ -2577,7 +2577,7 @@ void MavlinkReceiver::smooth_time_offset(int64_t offset_ns)
 void *MavlinkReceiver::start_helper(void *context)
 {
 
-	MavlinkReceiver *rcv = new MavlinkReceiver((Mavlink *)context);
+	MavlinkReceiver *rcv = new(std::nothrow) MavlinkReceiver((Mavlink *)context);
 
 	if (!rcv) {
 		PX4_ERR("alloc failed");

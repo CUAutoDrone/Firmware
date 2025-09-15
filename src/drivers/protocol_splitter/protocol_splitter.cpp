@@ -558,7 +558,7 @@ int protocol_splitter_main(int argc, char *argv[])
 			goto out;
 		}
 
-		objects = new StaticData();
+		objects = new(std::nothrow) StaticData();
 
 		if (!objects) {
 			PX4_ERR("alloc failed");

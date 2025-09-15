@@ -429,7 +429,7 @@ start(const char *uart_path, bool fake_gps, bool enable_sat_info, int fix_type, 
 	DevHandle h;
 
 	/* create the driver */
-	g_dev = new GPSSIM(uart_path, fake_gps, enable_sat_info, fix_type, num_sat, noise_multiplier);
+	g_dev = new(std::nothrow) GPSSIM(uart_path, fake_gps, enable_sat_info, fix_type, num_sat, noise_multiplier);
 
 	if (g_dev == nullptr) {
 		goto fail;

@@ -482,7 +482,7 @@ GroundRoverPositionControl::task_main()
 void
 GroundRoverPositionControl::task_main_trampoline(int argc, char *argv[])
 {
-	gnd_control::g_control = new GroundRoverPositionControl();
+	gnd_control::g_control = new(std::nothrow) GroundRoverPositionControl();
 
 	if (gnd_control::g_control == nullptr) {
 		warnx("OUT OF MEM");

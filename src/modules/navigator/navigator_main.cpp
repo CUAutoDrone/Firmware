@@ -1135,7 +1135,7 @@ int navigator_main(int argc, char *argv[])
 			return 1;
 		}
 
-		navigator::g_navigator = new Navigator;
+		navigator::g_navigator = new(std::nothrow) Navigator;
 
 		if (navigator::g_navigator == nullptr) {
 			PX4_ERR("alloc failed");

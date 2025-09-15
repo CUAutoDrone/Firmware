@@ -650,7 +650,7 @@ int attitude_estimator_q_main(int argc, char *argv[])
 			return 1;
 		}
 
-		attitude_estimator_q::instance = new AttitudeEstimatorQ;
+		attitude_estimator_q::instance = new(std::nothrow) AttitudeEstimatorQ;
 
 		if (attitude_estimator_q::instance == nullptr) {
 			warnx("alloc failed");

@@ -197,7 +197,7 @@ void usage();
 int start()
 {
 	PX4_ERR("start");
-	g_dev = new DfISL29501Wrapper();
+	g_dev = new(std::nothrow) DfISL29501Wrapper();
 
 	if (g_dev == nullptr) {
 		PX4_ERR("failed instantiating DfISL29501Wrapper object");

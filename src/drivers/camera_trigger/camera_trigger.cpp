@@ -865,7 +865,7 @@ int camera_trigger_main(int argc, char *argv[])
 			return 0;
 		}
 
-		camera_trigger::g_camera_trigger = new CameraTrigger();
+		camera_trigger::g_camera_trigger = new(std::nothrow) CameraTrigger();
 
 		if (camera_trigger::g_camera_trigger == nullptr) {
 			PX4_WARN("alloc failed");

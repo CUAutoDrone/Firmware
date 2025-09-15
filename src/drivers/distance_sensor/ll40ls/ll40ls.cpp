@@ -114,7 +114,7 @@ void start(enum LL40LS_BUS busid, uint8_t rotation)
 	}
 
 	if (busid == LL40LS_BUS_PWM) {
-		instance = new LidarLitePWM(LL40LS_DEVICE_PATH_PWM, rotation);
+		instance = new(std::nothrow) LidarLitePWM(LL40LS_DEVICE_PATH_PWM, rotation);
 
 		if (!instance) {
 			PX4_ERR("Failed to instantiate LidarLitePWM");
@@ -132,7 +132,7 @@ void start(enum LL40LS_BUS busid, uint8_t rotation)
 				continue;
 			}
 
-			instance = new LidarLiteI2C(bus_options[i].busnum, bus_options[i].devname, rotation);
+			instance = new(std::nothrow) LidarLiteI2C(bus_options[i].busnum, bus_options[i].devname, rotation);
 
 			if (!instance) {
 				PX4_ERR("Failed to instantiate LidarLiteI2C");

@@ -383,7 +383,7 @@ int gnd_att_control_main(int argc, char *argv[])
 			return 1;
 		}
 
-		att_gnd_control::g_control = new GroundRoverAttitudeControl;
+		att_gnd_control::g_control = new(std::nothrow) GroundRoverAttitudeControl;
 
 		if (att_gnd_control::g_control == nullptr) {
 			warnx("alloc failed");

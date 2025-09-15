@@ -167,7 +167,7 @@ int rpi_rc_in_main(int argc, char **argv)
 			return 0;
 		}
 
-		rc_input = new RcInput();
+		rc_input = new(std::nothrow) RcInput();
 
 		// Check if alloc worked.
 		if (nullptr == rc_input) {

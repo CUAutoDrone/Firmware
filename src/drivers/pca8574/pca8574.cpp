@@ -446,7 +446,7 @@ pca8574_main(int argc, char *argv[])
 		}
 
 		if (g_pca8574 == nullptr) {
-			g_pca8574 = new PCA8574(i2cdevice, pca8574adr);
+			g_pca8574 = new(std::nothrow) PCA8574(i2cdevice, pca8574adr);
 
 			if (g_pca8574 == nullptr) {
 				errx(1, "new failed");

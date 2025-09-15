@@ -272,9 +272,10 @@ void frsky_send_frame2(int uart)
 
 	if (gps->timestamp != 0 && hrt_absolute_time() < gps->timestamp + 20000) {
 		time_t time_gps = gps->time_utc_usec / 1000000ULL;
-		struct tm *tm_gps = gmtime(&time_gps);
+		struct tm tm_gps;
+		gmtime_r(&time_gps, &tm_gps);
 
-		sec    = tm_gps->tm_sec;
+		sec    = tm_gps.tm_sec;
 	}
 
 	frsky_send_data(uart, FRSKY_ID_GPS_COURS_BP, course);
@@ -310,12 +311,13 @@ void frsky_send_frame3(int uart)
 {
 	/* send formatted frame */
 	time_t time_gps = subscription_data->vehicle_gps_position.time_utc_usec / 1000000ULL;
-	struct tm *tm_gps = gmtime(&time_gps);
-	uint16_t hour_min = (tm_gps->tm_min << 8) | (tm_gps->tm_hour & 0xff);
-	frsky_send_data(uart, FRSKY_ID_GPS_DAY_MONTH, tm_gps->tm_mday);
-	frsky_send_data(uart, FRSKY_ID_GPS_YEAR, tm_gps->tm_year);
+	struct tm tm_gps;
+	gmtime_r(&time_gps, &tm_gps);
+	uint16_t hour_min = (tm_gps.tm_min << 8) | (tm_gps.tm_hour & 0xff);
+	frsky_send_data(uart, FRSKY_ID_GPS_DAY_MONTH, tm_gps.tm_mday);
+	frsky_send_data(uart, FRSKY_ID_GPS_YEAR, tm_gps.tm_year);
 	frsky_send_data(uart, FRSKY_ID_GPS_HOUR_MIN, hour_min);
-	frsky_send_data(uart, FRSKY_ID_GPS_SEC, tm_gps->tm_sec);
+	frsky_send_data(uart, FRSKY_ID_GPS_SEC, tm_gps.tm_sec);
 
 	frsky_send_startstop(uart);
 }

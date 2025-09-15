@@ -468,7 +468,7 @@ int irlock_main(int argc, char *argv[])
 		}
 
 		/** instantiate global instance **/
-		g_irlock = new IRLOCK(i2cdevice, IRLOCK_I2C_ADDRESS);
+		g_irlock = new(std::nothrow) IRLOCK(i2cdevice, IRLOCK_I2C_ADDRESS);
 
 		if (g_irlock == nullptr) {
 			errx(1, "failed to allocated memory for driver");

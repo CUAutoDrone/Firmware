@@ -566,7 +566,7 @@ static void pwmin_start()
 		errx(1, "driver already started");
 	}
 
-	g_dev = new PWMIN();
+	g_dev = new(std::nothrow) PWMIN();
 
 	if (g_dev == nullptr) {
 		errx(1, "driver allocation failed");

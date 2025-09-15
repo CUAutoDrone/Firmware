@@ -332,7 +332,7 @@ void usage();
 
 int start(enum Rotation rotation, const char *path)
 {
-	g_dev = new DfHmc5883Wrapper(rotation, path);
+	g_dev = new(std::nothrow) DfHmc5883Wrapper(rotation, path);
 
 	if (g_dev == nullptr) {
 		PX4_ERR("failed instantiating DfHmc5883Wrapper object");

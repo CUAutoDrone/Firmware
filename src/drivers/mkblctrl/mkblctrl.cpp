@@ -1235,7 +1235,7 @@ mk_start(unsigned motors, const char *device_path)
 	int ret;
 
 	// try i2c3 first
-	g_mk = new MK(3, device_path);
+	g_mk = new(std::nothrow) MK(3, device_path);
 
 	if (!g_mk) {
 		return -ENOMEM;
@@ -1254,7 +1254,7 @@ mk_start(unsigned motors, const char *device_path)
 	g_mk = nullptr;
 
 	// fallback to bus 1
-	g_mk = new MK(1, device_path);
+	g_mk = new(std::nothrow) MK(1, device_path);
 
 	if (!g_mk) {
 		return -ENOMEM;

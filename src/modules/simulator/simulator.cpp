@@ -143,7 +143,7 @@ int Simulator::start(int argc, char *argv[])
 {
 	int ret = 0;
 	int udp_port = 0;
-	_instance = new Simulator();
+	_instance = new(std::nothrow) Simulator();
 
 	if (_instance) {
 		drv_led_start();

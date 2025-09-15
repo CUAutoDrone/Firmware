@@ -58,7 +58,7 @@ start(uint8_t i2c_bus)
 		goto fail;
 	}
 
-	g_dev = new MS5525(i2c_bus, I2C_ADDRESS_1_MS5525DSO, PATH_MS5525);
+	g_dev = new(std::nothrow) MS5525(i2c_bus, I2C_ADDRESS_1_MS5525DSO, PATH_MS5525);
 
 	/* check if the MS4525DO was instantiated */
 	if (g_dev == nullptr) {

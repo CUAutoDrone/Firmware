@@ -135,7 +135,7 @@ void Geofence::_updateFence()
 			} else {
 				if (_polygons) {
 					// resize: this is somewhat inefficient, but we do not expect there to be many polygons
-					PolygonInfo *new_polygons = new PolygonInfo[_num_polygons + 1];
+					PolygonInfo *new_polygons = new(std::nothrow) PolygonInfo[_num_polygons + 1];
 
 					if (new_polygons) {
 						memcpy(new_polygons, _polygons, sizeof(PolygonInfo) * _num_polygons);

@@ -752,7 +752,7 @@ start(const char *port, uint8_t rotation)
 	}
 
 	/* create the driver */
-	g_dev = new TFMINI(port, rotation);
+	g_dev = new(std::nothrow) TFMINI(port, rotation);
 
 	if (g_dev == nullptr) {
 		goto fail;

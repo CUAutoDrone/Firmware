@@ -1463,7 +1463,7 @@ Mavlink::configure_stream_threadsafe(const char *stream_name, const float rate)
 
 		/* copy stream name */
 		unsigned n = strlen(stream_name) + 1;
-		char *s = new char[n];
+		char *s = new(std::nothrow) char[n];
 		strcpy(s, stream_name);
 
 		/* set subscription task */
@@ -2469,7 +2469,7 @@ void Mavlink::check_radio_config()
 int Mavlink::start_helper(int argc, char *argv[])
 {
 	/* create the instance in task context */
-	Mavlink *instance = new Mavlink();
+	Mavlink *instance = new(std::nothrow) Mavlink();
 
 	int res;
 
@@ -2643,7 +2643,7 @@ Mavlink::stream_command(int argc, char *argv[])
 
 	while (i < argc) {
 
-		if (0 == strcmp(argv[i], "-r") && i < argc - 1) {
+		if (i < argc - 1 && 0 == strcmp(argv[i], "-r")) {
 			rate = strtod(argv[i + 1], nullptr);
 
 			if (rate < 0.0f) {
@@ -2652,7 +2652,7 @@ Mavlink::stream_command(int argc, char *argv[])
 
 			i++;
 
-		} else if (0 == strcmp(argv[i], "-d") && i < argc - 1) {
+		} else if (i < argc - 1 && 0 == strcmp(argv[i], "-d")) {
 			provided_device = true;
 			device_name = argv[i + 1];
 			i++;
