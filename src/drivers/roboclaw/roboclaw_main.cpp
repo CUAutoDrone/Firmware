@@ -132,7 +132,7 @@ int roboclaw_main(int argc, char *argv[])
 			pulsesPerRev = strtoul(argv[4], nullptr, 0);
 		}
 
-		printf("device:\t%s\taddress:\t%d\tpulses per rev:\t%ld\n",
+		printf("device:\t%s\taddress:\t%d\tpulses per rev:\t%d\n",
 		       deviceName, address, pulsesPerRev);
 
 		roboclawTest(deviceName, address, pulsesPerRev);
@@ -177,7 +177,7 @@ int roboclaw_thread_main(int argc, char *argv[])
 	uint8_t address = strtoul(argv[2], nullptr, 0);
 	uint16_t pulsesPerRev = strtoul(argv[3], nullptr, 0);
 
-	printf("device:\t%s\taddress:\t%d\tpulses per rev:\t%ld\n",
+	printf("device:\t%s\taddress:\t%d\tpulses per rev:\t%d\n",
 	       deviceName, address, pulsesPerRev);
 
 	// start

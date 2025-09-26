@@ -401,7 +401,7 @@ static int write_registers_info(int fdout, info_s *pi, char *buffer, int sz)
 
 	if (pi->flags & eRegsPresent) {
 		ret = -EIO;
-		int n = snprintf(buffer, sz, " Processor registers: from 0x%08x\n", pi->current_regs);
+		int n = snprintf(buffer, sz, " Processor registers: from 0x%08lx\n", pi->current_regs);
 
 		if (n == write(fdout, buffer, n)) {
 			ret = write_registers(pi->regs, buffer, sz, fdout);

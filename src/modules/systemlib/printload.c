@@ -268,7 +268,7 @@ void print_load_buffer(uint64_t t, char *buffer, int buffer_length, print_load_c
 		}
 
 		// print output
-		int print_len = snprintf(buffer, buffer_length, "%4d %*-s %8d %2d.%03d %5u/%5u %3u (%3u) ",
+		int print_len = snprintf(buffer, buffer_length, "%4d %*-s %8d %2d.%03d %5u/%5lu %3lu (%3u) ",
 					 tcb_pid,
 					 CONFIG_TASK_NAME_SIZE, tcb_name,
 					 total_runtime[i],
