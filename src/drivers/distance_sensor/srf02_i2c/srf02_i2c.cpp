@@ -727,7 +727,7 @@ start(uint8_t rotation)
 	}
 
 	/* create the driver */
-	g_dev = new SRF02_I2C(rotation, SRF02_I2C_BUS);
+	g_dev = new(std::nothrow) SRF02_I2C(rotation, SRF02_I2C_BUS);
 
 	if (g_dev == nullptr) {
 		goto fail;

@@ -49,19 +49,19 @@ void initialize_parameter_handles(ParameterHandles &parameter_handles)
 		char nbuf[16];
 
 		/* min values */
-		sprintf(nbuf, "RC%d_MIN", i + 1);
+		snprintf(nbuf, sizeof(nbuf), "RC%d_MIN", i + 1);
 		parameter_handles.min[i] = param_find(nbuf);
 
 		/* trim values */
-		sprintf(nbuf, "RC%d_TRIM", i + 1);
+		snprintf(nbuf, sizeof(nbuf), "RC%d_TRIM", i + 1);
 		parameter_handles.trim[i] = param_find(nbuf);
 
 		/* max values */
-		sprintf(nbuf, "RC%d_MAX", i + 1);
+		snprintf(nbuf, sizeof(nbuf), "RC%d_MAX", i + 1);
 		parameter_handles.max[i] = param_find(nbuf);
 
 		/* channel reverse */
-		sprintf(nbuf, "RC%d_REV", i + 1);
+		snprintf(nbuf, sizeof(nbuf), "RC%d_REV", i + 1);
 		parameter_handles.rev[i] = param_find(nbuf);
 
 		/* channel deadzone */

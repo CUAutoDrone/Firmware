@@ -723,7 +723,7 @@ start(uint8_t rotation)
 	}
 
 	/* create the driver */
-	g_dev = new MB12XX(rotation, MB12XX_BUS);
+	g_dev = new(std::nothrow) MB12XX(rotation, MB12XX_BUS);
 
 	if (g_dev == nullptr) {
 		goto fail;

@@ -439,7 +439,7 @@ PX4IO_Uploader::program(size_t fw_size)
 	int ret;
 	size_t sent = 0;
 
-	file_buf = new uint8_t[PROG_MULTI_MAX];
+	file_buf = new(std::nothrow) uint8_t[PROG_MULTI_MAX];
 
 	if (!file_buf) {
 		log("Can't allocate program buffer");
@@ -550,12 +550,12 @@ PX4IO_Uploader::verify_rev2(size_t fw_size)
 			ret = recv_byte_with_timeout(&c, 5000);
 
 			if (ret != OK) {
-				log("%d: got %d waiting for bytes", sent + i, ret);
+				log("%ld: got %d waiting for bytes", sent + i, ret);
 				return ret;
 			}
 
 			if (c != file_buf[i]) {
-				log("%d: got 0x%02x expected 0x%02x", sent + i, c, file_buf[i]);
+				log("%ld: got 0x%02x expected 0x%02x", sent + i, c, file_buf[i]);
 				return -EINVAL;
 			}
 		}

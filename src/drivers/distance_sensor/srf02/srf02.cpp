@@ -727,7 +727,7 @@ start(uint8_t rotation)
 	}
 
 	/* create the driver */
-	g_dev = new SRF02(rotation, SRF02_BUS);
+	g_dev = new(std::nothrow) SRF02(rotation, SRF02_BUS);
 
 	if (g_dev == nullptr) {
 		goto fail;

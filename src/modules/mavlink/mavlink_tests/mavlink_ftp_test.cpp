@@ -402,7 +402,7 @@ bool MavlinkFtpTest::_read_test()
 
 		// Read in the file so we can compare it to what we get back
 		ut_compare("stat failed", stat(test->file, &st), 0);
-		uint8_t *bytes = new uint8_t[st.st_size];
+		uint8_t *bytes = new(std::nothrow) uint8_t[st.st_size];
 		ut_assert("new failed", bytes != nullptr);
 		int fd = ::open(test->file, O_RDONLY);
 		ut_assert("open failed", fd != -1);
@@ -516,7 +516,7 @@ bool MavlinkFtpTest::_burst_test()
 
 		// Read in the file so we can compare it to what we get back
 		ut_compare("stat failed", stat(test->file, &st), 0);
-		uint8_t *bytes = new uint8_t[st.st_size];
+		uint8_t *bytes = new(std::nothrow) uint8_t[st.st_size];
 		ut_assert("new failed", bytes != nullptr);
 		int fd = ::open(test->file, O_RDONLY);
 		ut_assert("open failed", fd != -1);

@@ -1165,7 +1165,7 @@ MK::write(file *filp, const char *buffer, size_t len)
 	// allow for misaligned values
 	memcpy(values, buffer, count * 2);
 
-	for (uint8_t i = 0; i < count; i++) {
+	for (unsigned i = 0; i < count; i++) {
 		Motor[i].RawPwmValue = (unsigned short)values[i];
 		mk_servo_set(i, scaling(values[i], _rc_min_value, _rc_max_value, 0, 2047));
 	}

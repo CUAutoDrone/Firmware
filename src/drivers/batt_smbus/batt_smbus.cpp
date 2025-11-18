@@ -769,7 +769,7 @@ BATT_SMBUS::get_PEC(uint8_t cmd, bool reading, const uint8_t buff[], uint8_t len
 	bool do_invert;
 
 	// for each byte in the stream
-	for (uint8_t i = 0; i < sizeof(tmp_buff); i++) {
+	for (unsigned long i = 0; i < sizeof(tmp_buff); i++) {
 		// load next data byte into the shift register
 		shift_reg = tmp_buff[i];
 

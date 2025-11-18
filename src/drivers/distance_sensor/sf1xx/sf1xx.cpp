@@ -656,7 +656,7 @@ start(uint8_t rotation)
 	}
 
 	/* create the driver */
-	g_dev = new SF1XX(rotation, SF1XX_BUS);
+	g_dev = new(std::nothrow) SF1XX(rotation, SF1XX_BUS);
 
 	if (g_dev == nullptr) {
 		goto fail;

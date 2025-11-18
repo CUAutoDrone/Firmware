@@ -770,7 +770,7 @@ start(uint8_t rotation)
 	}
 
 	/* create the driver */
-	g_dev = new TERARANGER(rotation, TERARANGER_BUS);
+	g_dev = new(std::nothrow) TERARANGER(rotation, TERARANGER_BUS);
 
 
 	if (g_dev == nullptr) {

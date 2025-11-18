@@ -726,7 +726,7 @@ start()
 	}
 
 	/* create the driver */
-	g_dev = new HC_SR04();
+	g_dev = new(std::nothrow) HC_SR04();
 
 	if (g_dev == nullptr) {
 		goto fail;

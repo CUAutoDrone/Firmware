@@ -1208,7 +1208,7 @@ start(bool external_bus, enum Rotation rotation)
 #endif
 
 	} else {
-		g_dev = new FXAS21002C(PX4_SPI_BUS_SENSORS, FXAS21002C_DEVICE_PATH_GYRO, PX4_SPIDEV_GYRO, rotation);
+		g_dev = new(std::nothrow) FXAS21002C(PX4_SPI_BUS_SENSORS, FXAS21002C_DEVICE_PATH_GYRO, PX4_SPIDEV_GYRO, rotation);
 	}
 
 	if (g_dev == nullptr) {

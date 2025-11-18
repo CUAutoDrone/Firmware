@@ -142,7 +142,7 @@ uORB::DeviceNode::open(device::file_t *filp)
 	if (FILE_FLAGS(filp) == PX4_F_RDONLY) {
 
 		/* allocate subscriber data */
-		SubscriberData *sd = new SubscriberData;
+		SubscriberData *sd = new(std::nothrow) SubscriberData;
 
 		if (nullptr == sd) {
 			return -ENOMEM;

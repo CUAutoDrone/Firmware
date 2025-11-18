@@ -1011,7 +1011,7 @@ OREOLED::bootloader_flash(int led_num)
 		return -1;
 	}
 
-	uint8_t *buf = new uint8_t[s.st_size];
+	uint8_t *buf = new(std::nothrow) uint8_t[s.st_size];
 
 	/* check that the buffer has been allocated */
 	if (buf == NULL) {
@@ -1288,7 +1288,7 @@ OREOLED::bootloader_fw_checksum(void)
 			return -1;
 		}
 
-		uint8_t *buf = new uint8_t[s.st_size];
+		uint8_t *buf = new(std::nothrow) uint8_t[s.st_size];
 
 		/* check that the buffer has been allocated */
 		if (buf == NULL) {
@@ -1310,7 +1310,7 @@ OREOLED::bootloader_fw_checksum(void)
 		   the next two bytes which are modified by the bootloader */
 		uint16_t app_checksum = 0x0000;
 
-		for (uint16_t j = 2 + OREOLED_FW_FILE_HEADER_LENGTH; j < s.st_size; j += 2) {
+		for (__off_t j = 2 + OREOLED_FW_FILE_HEADER_LENGTH; j < s.st_size; j += 2) {
 			app_checksum ^= (buf[j] << 8) | buf[j + 1];
 		}
 

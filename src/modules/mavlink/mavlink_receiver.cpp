@@ -2395,7 +2395,7 @@ MavlinkReceiver::receive_thread(void *arg)
 	/* set thread name */
 	{
 		char thread_name[24];
-		sprintf(thread_name, "mavlink_rcv_if%d", _mavlink->get_instance_id());
+		snprintf(thread_name, sizeof(thread_name), "mavlink_rcv_if%d", _mavlink->get_instance_id());
 		px4_prctl(PR_SET_NAME, thread_name, px4_getpid());
 	}
 

@@ -1104,7 +1104,7 @@ PX4IO::task_main()
 					int32_t ival;
 
 					/* fill the channel reverse mask from parameters */
-					sprintf(pname, "PWM_MAIN_REV%u", i + 1);
+					snprintf(pname, sizeof(pname), "PWM_MAIN_REV%u", i + 1);
 					param_t param_h = param_find(pname);
 
 					if (param_h != PARAM_INVALID) {
@@ -1126,7 +1126,7 @@ PX4IO::task_main()
 					float pval;
 
 					/* fetch the trim values from parameters */
-					sprintf(pname, "PWM_MAIN_TRIM%u", i + 1);
+					snprintf(pname, sizeof(pname), "PWM_MAIN_TRIM%u", i + 1);
 					param_t param_h = param_find(pname);
 
 					if (param_h != PARAM_INVALID) {
@@ -1540,15 +1540,15 @@ PX4IO::io_set_rc_config()
 		 * Inverted flag: -1 (inverted) or 1 (normal)
 		 */
 
-		sprintf(pname, "RC%u_MIN", i + 1);
+		snprintf(pname, sizeof(pname), "RC%u_MIN", i + 1);
 		param_get(param_find(pname), &fval);
 		regs[PX4IO_P_RC_CONFIG_MIN] = fval;
 
-		sprintf(pname, "RC%u_TRIM", i + 1);
+		snprintf(pname, sizeof(pname), "RC%u_TRIM", i + 1);
 		param_get(param_find(pname), &fval);
 		regs[PX4IO_P_RC_CONFIG_CENTER] = fval;
 
-		sprintf(pname, "RC%u_MAX", i + 1);
+		snprintf(pname, sizeof(pname), "RC%u_MAX", i + 1);
 		param_get(param_find(pname), &fval);
 		regs[PX4IO_P_RC_CONFIG_MAX] = fval;
 
@@ -1559,7 +1559,7 @@ PX4IO::io_set_rc_config()
 		regs[PX4IO_P_RC_CONFIG_ASSIGNMENT] = input_map[i];
 
 		regs[PX4IO_P_RC_CONFIG_OPTIONS] = PX4IO_P_RC_CONFIG_OPTIONS_ENABLED;
-		sprintf(pname, "RC%u_REV", i + 1);
+		snprintf(pname, sizeof(pname), "RC%u_REV", i + 1);
 		param_get(param_find(pname), &fval);
 
 		/*

@@ -1728,7 +1728,7 @@ start(bool external_bus, enum Rotation rotation, unsigned range)
 #endif
 
 	} else {
-		g_dev = new FXOS8701CQ(PX4_SPI_BUS_SENSORS, FXOS8701C_DEVICE_PATH_ACCEL, PX4_SPIDEV_ACCEL_MAG, rotation);
+		g_dev = new(std::nothrow) FXOS8701CQ(PX4_SPI_BUS_SENSORS, FXOS8701C_DEVICE_PATH_ACCEL, PX4_SPIDEV_ACCEL_MAG, rotation);
 	}
 
 	if (g_dev == nullptr) {

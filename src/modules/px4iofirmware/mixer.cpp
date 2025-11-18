@@ -553,7 +553,7 @@ mixer_handle_text(const void *buffer, size_t length)
 
 	px4io_mixdata	*msg = (px4io_mixdata *)buffer;
 
-	isr_debug(2, "mix txt %u", length);
+	isr_debug(2, "mix txt %lu", length);
 
 	if (length < sizeof(px4io_mixdata)) {
 		return 0;
@@ -571,7 +571,7 @@ mixer_handle_text(const void *buffer, size_t length)
 
 	/* FALLTHROUGH */
 	case F2I_MIXER_ACTION_APPEND:
-		isr_debug(2, "append %d", length);
+		isr_debug(2, "append %ld", length);
 
 		/* check for overflow - this would be really fatal */
 		if ((mixer_text_length + text_length + 1) > sizeof(mixer_text)) {
