@@ -22,7 +22,7 @@ for index,m in enumerate(raw_messages):
 	if("pwm_input" not in m and "position_setpoint" not in m):
 		temp_list = []
 		topic_list = []
-		f = open(m,'r')
+		f = open(os.path.realpath(m),'r')
 		for line in f.readlines():
 			items = re.split('\s+', line.strip())
 
