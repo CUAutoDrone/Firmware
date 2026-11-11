@@ -220,7 +220,7 @@ void uORB::KraitFastRpcChannel::Stop()
 void  *uORB::KraitFastRpcChannel::thread_start(void *handler)
 {
 	if (handler != nullptr) {
-		((uORB::KraitFastRpcChannel *)handler)->fastrpc_recv_thread();
+		(static_cast<uORB::KraitFastRpcChannel *>(handler))->fastrpc_recv_thread();
 	}
 
 	return 0;
